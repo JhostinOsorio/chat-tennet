@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import { useState } from 'react'
+import { ChatTennet } from './components/ChatTennet';
 import './App.css';
 
-function App() {
+const initialTennetData = {
+  id: '',
+  name: '',
+  email: '',
+  extraCodeCourse: ''
+}
+
+const App = () => {
+
+  const [ tennetData, setTennetData ] = useState(initialTennetData)
+
+  const execute = () => {
+    if (tennetData.id) {
+      setTennetData(initialTennetData)
+    } else {
+      setTennetData({
+        id: 'inlearning',
+        name: 'Juan Garcia',
+        email: 'mario.lema.ch@gmail.com',
+        extraCodeCourse: '9999'
+      })
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className='btn-local' onClick={execute}>
+        { tennetData.id ? 'Remover' : 'Mostrar' } Chat
+      </button>
+      {
+        tennetData.extraCodeCourse && (
+          <ChatTennet
+            id={tennetData.id}
+            name={tennetData.name}
+            email={tennetData.email}
+            extraCodeCourse={tennetData.extraCodeCourse}
+          />
+        )
+      }
     </div>
   );
 }
