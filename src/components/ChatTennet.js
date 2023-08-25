@@ -1,3 +1,4 @@
+/* eslint-disable no-new-func */
 import { useEffect } from "react"
 
 export const ChatTennet = ({
