@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChatTennet } from './components/ChatTennet';
+import { ChatTennet } from './components/ChatTennet/index';
 import './App.css';
 
 const initialTennetData = {
